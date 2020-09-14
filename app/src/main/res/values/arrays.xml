@@ -9,4 +9,24 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+        <string-array name="newsImage">
+            <item>https://cdn.stocksnap.io/img-thumbs/960w/philadelphiatravel_LPDQBLM2A0.jpg</item>
+            <item>https://cdn.stocksnap.io/img-thumbs/960w/peoplestudent_EWT7K0DQLN.jpg</item>
+            <item>https://cdn.stocksnap.io/img-thumbs/960w/restaurantbar_KI4IDLRWIJ.jpg</item>
+            <item>https://cdn.stocksnap.io/img-thumbs/960w/bookpen_S05DRRCFVB.jpg</item>
+        </string-array>
+
+    <string-array name="newsTitle">
+        <item>New Transport Arrangement</item>
+        <item>Updates on Library Guided Tour</item>
+        <item>Special Offers from Coffee Rider</item>
+        <item>Information on Keynote Speech</item>
+    </string-array>
+    <string-array name="newsDetail">
+        <item>University has stepped up its security measures and the Campus Access, there will be new arrangements for the shuttle bus service...</item>
+        <item>The maximum number of participants for each guided tour is 30. Each guided tour lasts about an hour.</item>
+        <item>Enjoy 1-for-1</item>
+        <item>The Info Day features two keynote speeches, by Professer Roland Chin and Ms. Cindy Chan.</item>
+    </string-array>
 </resources>

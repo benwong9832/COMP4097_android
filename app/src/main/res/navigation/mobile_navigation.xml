@@ -3,33 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/newsListFragment">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.infoday.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/newsListFragment"
+        android:name="com.example.infoday.ui.news.NewsListFragment"
+        android:label="News"
+        tools:layout="@layout/fragment_news_list" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.infoday.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/eventsFragment"
+        android:name="com.example.infoday.ui.events.EventFragment"
+        android:label="Events"
+        tools:layout="@layout/fragment_event_list" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.infoday.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.infoday.MapsFragment"
-        android:label="fragment_maps"
+        android:label="Map"
         tools:layout="@layout/fragment_maps" />
 
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.example.infoday.ui.info.InfoFragment"
-        android:label="InfoFragment" />
+        android:label="Info" />
+
 </navigation>
