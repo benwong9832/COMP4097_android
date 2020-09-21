@@ -8,8 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.example.infoday.R
+import com.example.infoday.data.AppDatabase
 import com.example.infoday.ui.events.dummy.DummyContent
+
+import com.example.infoday.data.SampleData //.events.dummy.DummyContent
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * A fragment representing a list of Items.
@@ -39,7 +46,32 @@ class EventFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = EventRecyclerViewAdapter(DummyContent.ITEMS)
+//                adapter = DeptRecyclerViewAdapter(DummyContent.ITEMS)
+//                adapter = DeptRecyclerViewAdapter(SampleData.DEPT)
+//                adapter = EventRecyclerViewAdapter(DummyContent.ITEMS)
+
+                //our code here
+                val dept_id = arguments?.getString("dept_id")
+                if (dept_id == null)
+                    adapter = DeptRecyclerViewAdapter(SampleData.DEPT)
+                else {
+//                    adapter = EventRecyclerViewAdapter(SampleData.EVENT.filter { it.deptId == dept_id})
+                    //to enable the back-arrow in the ActionBar.
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val dao = AppDatabase.getInstance(context).eventDao()
+                        val events = dao.findEventsByDeptID(dept_id)
+                        CoroutineScope(Dispatchers.Main).launch {
+                            adapter = EventRecyclerViewAdapter(events)
+                        }
+                    }
+
+
+                    (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                }
+
+
+
+
             }
         }
         return view

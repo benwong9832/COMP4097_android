@@ -12,10 +12,14 @@
         tools:layout="@layout/fragment_news_list" />
 
     <fragment
-        android:id="@+id/eventsFragment"
+        android:id="@+id/eventFragment"
         android:name="com.example.infoday.ui.events.EventFragment"
         android:label="Events"
-        tools:layout="@layout/fragment_event_list" />
+        tools:layout="@layout/fragment_event_list" >
+        <action
+            android:id="@+id/action_eventFragment_self"
+            app:destination="@id/eventFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/mapsFragment"
@@ -27,5 +31,6 @@
         android:id="@+id/infoFragment"
         android:name="com.example.infoday.ui.info.InfoFragment"
         android:label="Info" />
+
 
 </navigation>

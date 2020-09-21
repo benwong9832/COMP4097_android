@@ -1,29 +1,29 @@
+//package com.example.infoday.ui.events
+//
+//class DeptRecyclerViewAdapter {
+//}
+
 package com.example.infoday.ui.events
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import com.example.infoday.R
-import com.example.infoday.data.AppDatabase
 
 import com.example.infoday.ui.events.dummy.DummyContent.DummyItem
-
-import com.example.infoday.data.Event
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
+import com.example.infoday.data.Dept// ui.events.dummy.DummyContent.DummyItem
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class EventRecyclerViewAdapter(
-    private val values: List<Event>
-) : RecyclerView.Adapter<EventRecyclerViewAdapter.ViewHolder>() {
+class DeptRecyclerViewAdapter(
+    private val values: List<Dept>
+) : RecyclerView.Adapter<DeptRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -33,20 +33,10 @@ class EventRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-
-        holder.eventIdView.text = item.deptId + " : " + item.id
-        holder.eventNameView.text = item.title
-//        holder.contentView.text = item.bookmarked
-
-        holder.itemView.setOnClickListener { v ->
-            CoroutineScope(IO).launch {
-            val dao = AppDatabase.getInstance(v.context).eventDao()
-            dao.update(values[position].also{ it.bookmarked = true })
-            dao.findAllBookmarkedEvents().forEach {Log.d("EventRecyclerViewAdapter", "onBindViewHolder: $it") }
-        }
-            Toast.makeText(v.context, "${item.title} is bookmarked",
-                Toast.LENGTH_SHORT).show()
-        }
+//        holder.idView.text = item.id
+//        holder.contentView.text = item.content
+        holder.eventIdView.text = item.id
+        holder.eventNameView.text = item.name
     }
 
     override fun getItemCount(): Int = values.size
@@ -54,11 +44,19 @@ class EventRecyclerViewAdapter(
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //        val idView: TextView = view.findViewById(R.id.eventId)
 //        val contentView: TextView = view.findViewById(R.id.eventName)
-
         val eventIdView: TextView = view.findViewById(R.id.eventId)
         val eventNameView: TextView = view.findViewById(R.id.eventName)
 
+        init {
+            view.setOnClickListener {
+                it.findNavController().navigate(R.id.action_eventFragment_self,
+                    bundleOf(Pair("dept_id", eventIdView.text.toString()))
+                )
+            }
+        }
+
         override fun toString(): String {
+//            return super.toString() + " '" + contentView.text + "'"
             return super.toString() + " '" + eventNameView.text + "'"
         }
     }
