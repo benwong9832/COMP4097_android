@@ -22,6 +22,12 @@
     </fragment>
 
     <fragment
+        android:id="@+id/bookmarkFragment"
+        android:name="com.example.infoday.ui.events.BookmarkFragment"
+        android:label="Bookmark"
+        tools:layout="@layout/fragment_bookmark_item_list" />
+
+    <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.infoday.MapsFragment"
         android:label="Map"
@@ -31,6 +37,5 @@
         android:id="@+id/infoFragment"
         android:name="com.example.infoday.ui.info.InfoFragment"
         android:label="Info" />
-
 
 </navigation>

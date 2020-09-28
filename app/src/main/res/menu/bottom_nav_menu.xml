@@ -12,6 +12,11 @@
         android:title="@string/title_events" />
 
     <item
+        android:id="@+id/bookmarkFragment"
+        android:icon="@drawable/ic_baseline_bookmark_border_24"
+        android:title="@string/title_bookmark" />
+
+    <item
         android:id="@+id/mapsFragment"
         android:icon="@drawable/ic_baseline_map_24"
         android:title="@string/title_map" />
